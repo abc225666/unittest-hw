@@ -1,4 +1,6 @@
 class Potter:
+    BOOK_LIST = ["book1", "book2", "book3", "book4", "book5"]
+
     def __init__(self):
         self.book_cart = {}
 
@@ -7,8 +9,19 @@ class Potter:
 
     def add_cart(self, books):
         # books type is {"book1": amount, "book2": amount....}
-        pass
+        for k,v in books.items():
+            if k not in self.BOOK_LIST:
+                continue
+
+            if k not in self.book_cart:
+                self.book_cart[k] = 0
+            self.book_cart[k] += v
+
 
     def get_price(self):
         # get final price with discount
-        pass
+        total = 0
+        for k, v in self.book_cart.items():
+            total += 8 * v
+
+        return total
