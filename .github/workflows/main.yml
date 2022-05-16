@@ -1,0 +1,12 @@
+name: test
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+
+jobs:
+  main:
+    runs-on: python:3.8
+    steps:
+    - run: python -m unittest discover test/
